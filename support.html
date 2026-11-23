@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support · PettyCash</title>
+<meta name="description" content="Help and frequently asked questions for the PettyCash iPhone app.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+  :root {
+    --bg: #f6f7f9; --surface: #ffffff; --text: #16181d; --muted: #5b616e; --border: #e2e5ea;
+    --accent: #1f7a4d; --accent-soft: #e6f3ec; --mark: #fff3bf; --mark-text: #5c4400;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1114; --surface: #171a1f; --text: #eceef2; --muted: #a2a8b4; --border: #2a2f37;
+      --accent: #5fd197; --accent-soft: #15291f; --mark: #4a3b00; --mark-text: #ffe58a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  a { color: var(--accent); text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+  header.site { border-bottom: 1px solid var(--border); background: var(--surface); }
+  header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--text); text-decoration: none; }
+  .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  nav.site { display: flex; gap: 16px; flex-wrap: wrap; font-size: 15px; }
+  nav.site a { color: var(--muted); text-decoration: none; }
+  nav.site a[aria-current="page"] { color: var(--text); font-weight: 600; }
+  main { padding: 32px 0 48px; }
+  h1 { font-size: 34px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.02em; }
+  h2 { font-size: 23px; margin: 40px 0 8px; padding-top: 8px; border-top: 1px solid var(--border); letter-spacing: -0.01em; }
+  h3 { font-size: 19px; margin: 28px 0 6px; }
+  h4 { font-size: 17px; margin: 20px 0 4px; }
+  p, ul { margin: 0 0 14px; }
+  ul { padding-left: 22px; }
+  li { margin: 4px 0; }
+  li > ul { margin: 4px 0 0; }
+  hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+  code { font: 0.88em/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--accent-soft); padding: 1px 5px; border-radius: 5px; overflow-wrap: anywhere; }
+  .table { overflow-x: auto; margin: 0 0 18px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; }
+  th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: 0; }
+  th { font-weight: 600; background: var(--accent-soft); }
+  mark.ph { background: var(--mark); color: var(--mark-text); padding: 0 3px; border-radius: 3px; }
+  .lead { color: var(--muted); }
+  footer.site { border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; padding: 20px 0 32px; }
+  footer.site a { color: var(--muted); }
+  @media (max-width: 480px) { h1 { font-size: 28px; } body { font-size: 16px; } }
+
+  .hero { display: flex; gap: 20px; align-items: center; margin-bottom: 8px; }
+  .hero img { width: 88px; height: 88px; border-radius: 20px; flex: none; box-shadow: 0 4px 16px rgba(0,0,0,.12); }
+  .hero h1 { margin: 0; }
+  .tagline { font-size: 20px; line-height: 1.45; color: var(--muted); margin: 10px 0 18px; }
+  .pill { display: inline-block; font-size: 14px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 16px 0 8px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
+  .card h3 { margin: 0 0 6px; font-size: 17px; }
+  .card p { margin: 0; font-size: 15px; color: var(--muted); }
+  .callout { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 10px; padding: 14px 16px; margin: 16px 0; }
+  details { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 0 16px; margin: 0 0 10px; }
+  summary { cursor: pointer; font-weight: 600; padding: 14px 0; list-style-position: outside; }
+  details[open] summary { border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+  details > *:last-child { margin-bottom: 14px; }
+  @media (max-width: 480px) { .hero img { width: 64px; height: 64px; border-radius: 15px; } .tagline { font-size: 18px; } }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="icon-192.png" alt="" width="32" height="32">PettyCash</a>
+    <nav class="site" aria-label="Site">
+      <a href="./" data-nav="home">Home</a>
+      <a href="privacy.html" data-nav="privacy">Privacy</a>
+      <a href="terms.html" data-nav="terms">Terms</a>
+      <a href="support.html" data-nav="support" aria-current="page">Support</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <article class="wrap">
+    <h1>Support</h1>
+    <p class="lead">Need help with PettyCash? Check the answers below, or email
+    <a href="mailto:pettycash.help@gmail.com">pettycash.help@gmail.com</a>. I usually reply within a few business days. Please don't send receipts or
+    financial details unless I ask for them.</p>
+
+    <h2 id="getting-started">Getting started</h2>
+    <details><summary>Do I need an account?</summary>
+      <p>No. PettyCash has no accounts and no sign-up. Connecting Google is optional and only needed if you want to send
+      reports from your own Gmail.</p></details>
+    <details><summary>The scanner doesn't open, or the camera is black.</summary>
+      <p>Allow camera access in the iPhone Settings app → PettyCash → Camera. The scanner needs a real iPhone camera. If
+      you can't scan, you can still use <strong>Import from Photos</strong>, <strong>Import from Files</strong> or
+      <strong>Enter Manually</strong>.</p></details>
+    <details><summary>The app read the wrong amount or date.</summary>
+      <p>Text recognition suggests values but can't be perfect, and PettyCash never fills in information it isn't sure
+      about. Always check the review screen before saving. You can edit any expense later from the Receipts tab.</p></details>
+    <details><summary>Which currency does PettyCash use?</summary>
+      <p>The currency you choose in Settings: CAD, USD, EUR, GBP, AUD or NZD, plus your iPhone's own currency if it's
+      another one PettyCash can record. The default is Canadian dollars in Canada and, elsewhere, your iPhone's currency
+      when PettyCash supports it. Amounts are never converted between currencies. English and French receipts and
+      Canadian date formats are supported.</p></details>
+
+    <h2 id="sending">Sending reports</h2>
+    <details><summary>How does sending from Gmail work? Can PettyCash read my email?</summary>
+      <p>You connect your own Google account. PettyCash asks Google for permission to <strong>send</strong> email
+      (<code>gmail.send</code>) and for your email address, which it uses to show the connected account and send from
+      it. It <strong>cannot read, search or delete</strong> your mail. When you tap Send from Gmail, the email goes directly from your iPhone to Google, with no PettyCash server involved,
+      and appears in your Gmail Sent folder.</p></details>
+    <details><summary>How do I disconnect Google?</summary>
+      <p>Tap Disconnect Gmail in Settings › Sending. PettyCash deletes its token and asks Google to revoke it. You can
+      also remove access at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</p></details>
+    <details><summary>Gmail says I've reached a sending limit.</summary>
+      <p>Google limits how many emails and recipients each account can send per day. PettyCash can't change those limits.
+      Wait up to 24 hours, or send this report with Apple Mail or the share sheet instead.</p></details>
+    <details><summary>The app says "sent" but my employer didn't get it.</summary>
+      <p>"Sent" means Google (or your mail app) accepted the message. It doesn't prove delivery. Check the address in
+      Settings, look in the mailbox you sent from for a bounce notice, and ask the recipient to check their spam folder.</p></details>
+    <details><summary>The report is too large to email.</summary>
+      <p>PettyCash automatically prepares a smaller, email-sized copy when it can. If it's still too large, use Share
+      PDF to send it another way (for example a file-sharing link), or split the expenses into two reports.</p></details>
+    <details><summary>I don't use Gmail.</summary>
+      <p>That's fine. Use Apple Mail (if a Mail account is set up on your iPhone), or share the PDF to Outlook or any
+      other app.</p></details>
+    <details><summary>Does PettyCash have its own server?</summary>
+      <p>No. The developer runs no servers and never receives your data. Reports go from your iPhone to your own Gmail,
+      or through Apple Mail or the app you pick in the share sheet.</p></details>
+
+    <h2 id="data">Your data</h2>
+    <details><summary>Where is my data stored? Can you recover it?</summary>
+      <p>On your iPhone (and in your own iPhone backups, if you use them). The developer has no copy, so I can't recover
+      lost data. Use <strong>Settings → Data → Export
+      Backup</strong> regularly and save the file somewhere safe (it contains your financial records, so keep it
+      private).</p></details>
+    <details><summary>How do I move to a new iPhone?</summary>
+      <p>Restore your iPhone from an iCloud or computer backup, or export a PettyCash backup on the old iPhone and import
+      it on the new one (Settings → Data). Google connections don't move to a new device, so connect Gmail again.</p></details>
+    <details><summary>How do I delete my data?</summary>
+      <p>Settings → Erase Data → <strong>Erase Everything</strong> removes all data, settings and the Google connection. Deleting the
+      app also removes its data. Files you exported or shared, and emails you sent, must be deleted where they are.</p></details>
+    <details><summary>Face ID isn't working.</summary>
+      <p>If Face ID fails, you can unlock with your iPhone passcode. You can turn the app lock off in Settings → Privacy &amp; Security.</p></details>
+    <details><summary>Does PettyCash work offline?</summary>
+      <p>Yes. Everything except connecting Gmail and sending email works without an internet connection.</p></details>
+
+    <h2 id="other">Other</h2>
+    <details><summary>Is PettyCash financial or tax advice?</summary>
+      <p>No. It's a record-keeping tool. Check your employer's expense policy, and ask a professional about tax
+      questions. You're responsible for the accuracy of what you submit. See the <a href="terms.html">Terms of Use</a>.</p></details>
+
+    <h2 id="contact">Contact</h2>
+    <p>Email: <a href="mailto:pettycash.help@gmail.com">pettycash.help@gmail.com</a><br>Developer: Radin Ahmadi, British Columbia, Canada</p>
+    <p>When you write, include your iPhone model, iOS version and PettyCash version (Settings → About &amp; Legal), and what you
+    expected to happen.</p>
+
+  </article>
+</main>
+<footer class="site">
+  <div class="wrap">
+    © 2026 Radin Ahmadi · British Columbia, Canada ·
+    <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a> · <a href="support.html">Support</a><br>
+    Gmail and Google are trademarks of Google LLC. PettyCash is not affiliated with or endorsed by Google or Apple.
+  </div>
+</footer>
+</body>
+</html>

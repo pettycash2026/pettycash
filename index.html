@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PettyCash: receipt reimbursement reports for iPhone</title>
+<meta name="description" content="PettyCash is an iPhone app that scans work receipts, tracks what your employer owes you, and sends one professional reimbursement PDF. Your data is stored on your device.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+  :root {
+    --bg: #f6f7f9; --surface: #ffffff; --text: #16181d; --muted: #5b616e; --border: #e2e5ea;
+    --accent: #1f7a4d; --accent-soft: #e6f3ec; --mark: #fff3bf; --mark-text: #5c4400;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1114; --surface: #171a1f; --text: #eceef2; --muted: #a2a8b4; --border: #2a2f37;
+      --accent: #5fd197; --accent-soft: #15291f; --mark: #4a3b00; --mark-text: #ffe58a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  a { color: var(--accent); text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+  header.site { border-bottom: 1px solid var(--border); background: var(--surface); }
+  header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--text); text-decoration: none; }
+  .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  nav.site { display: flex; gap: 16px; flex-wrap: wrap; font-size: 15px; }
+  nav.site a { color: var(--muted); text-decoration: none; }
+  nav.site a[aria-current="page"] { color: var(--text); font-weight: 600; }
+  main { padding: 32px 0 48px; }
+  h1 { font-size: 34px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.02em; }
+  h2 { font-size: 23px; margin: 40px 0 8px; padding-top: 8px; border-top: 1px solid var(--border); letter-spacing: -0.01em; }
+  h3 { font-size: 19px; margin: 28px 0 6px; }
+  h4 { font-size: 17px; margin: 20px 0 4px; }
+  p, ul { margin: 0 0 14px; }
+  ul { padding-left: 22px; }
+  li { margin: 4px 0; }
+  li > ul { margin: 4px 0 0; }
+  hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+  code { font: 0.88em/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--accent-soft); padding: 1px 5px; border-radius: 5px; overflow-wrap: anywhere; }
+  .table { overflow-x: auto; margin: 0 0 18px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; }
+  th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: 0; }
+  th { font-weight: 600; background: var(--accent-soft); }
+  mark.ph { background: var(--mark); color: var(--mark-text); padding: 0 3px; border-radius: 3px; }
+  .lead { color: var(--muted); }
+  footer.site { border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; padding: 20px 0 32px; }
+  footer.site a { color: var(--muted); }
+  @media (max-width: 480px) { h1 { font-size: 28px; } body { font-size: 16px; } }
+
+  .hero { display: flex; gap: 20px; align-items: center; margin-bottom: 8px; }
+  .hero img { width: 88px; height: 88px; border-radius: 20px; flex: none; box-shadow: 0 4px 16px rgba(0,0,0,.12); }
+  .hero h1 { margin: 0; }
+  .tagline { font-size: 20px; line-height: 1.45; color: var(--muted); margin: 10px 0 18px; }
+  .pill { display: inline-block; font-size: 14px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 16px 0 8px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
+  .card h3 { margin: 0 0 6px; font-size: 17px; }
+  .card p { margin: 0; font-size: 15px; color: var(--muted); }
+  .callout { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 10px; padding: 14px 16px; margin: 16px 0; }
+  details { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 0 16px; margin: 0 0 10px; }
+  summary { cursor: pointer; font-weight: 600; padding: 14px 0; list-style-position: outside; }
+  details[open] summary { border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+  details > *:last-child { margin-bottom: 14px; }
+  @media (max-width: 480px) { .hero img { width: 64px; height: 64px; border-radius: 15px; } .tagline { font-size: 18px; } }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="icon-192.png" alt="" width="32" height="32">PettyCash</a>
+    <nav class="site" aria-label="Site">
+      <a href="./" data-nav="home" aria-current="page">Home</a>
+      <a href="privacy.html" data-nav="privacy">Privacy</a>
+      <a href="terms.html" data-nav="terms">Terms</a>
+      <a href="support.html" data-nav="support">Support</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <article class="wrap">
+    <div class="hero">
+      <img src="icon-192.png" alt="PettyCash app icon" width="88" height="88">
+      <h1>PettyCash</h1>
+    </div>
+    <p class="tagline">Scan your work receipts, see exactly how much your employer owes you, and send one clean
+    reimbursement report, all from your iPhone.</p>
+    <p><span class="pill">Coming soon to the App Store · iPhone · iOS 17 or later</span></p>
+    <!-- After approval, replace the line above with a link to [APP STORE URL]. Use Apple's official
+         "Download on the App Store" badge only as described in Apple's marketing guidelines. -->
+
+    <h2 id="what-it-does">What PettyCash does</h2>
+    <p>PettyCash is for anyone who pays for work purchases out of pocket and gets paid back later.</p>
+    <div class="grid">
+      <div class="card"><h3>Scan</h3><p>Apple's document scanner turns paper receipts, including long and multi-page ones, into sharp PDFs. You can also import from Photos or Files.</p></div>
+      <div class="card"><h3>Read</h3><p>On-device text recognition suggests the store, date and final total. You confirm every field, and nothing is guessed.</p></div>
+      <div class="card"><h3>Track</h3><p>Total Owed is always up to date. Statuses, partial payments with history, duplicate warnings, and company-paid purchases kept out of the total.</p></div>
+      <div class="card"><h3>Report</h3><p>One professional PDF: a summary, an itemized table with the total, and every receipt in date order (oldest to newest), with page numbers.</p></div>
+      <div class="card"><h3>Send</h3><p>Send the report from your own Gmail account, with Apple Mail, or through any app in the share sheet.</p></div>
+      <div class="card"><h3>Private</h3><p>No account, no ads, no analytics, no tracking. Optional Face ID lock, and backups you export yourself.</p></div>
+    </div>
+
+    <h2 id="privacy">Your data is stored on your iPhone</h2>
+    <p>Your expenses, receipt scans, reports, payments and settings are stored on your device, protected by iOS
+    Data Protection. Text recognition runs on your iPhone. The developer runs <strong>no servers</strong> and never
+    receives your data. Data leaves the app only when you choose to send, share or export it.
+    Read the full <a href="privacy.html">Privacy Policy</a>.</p>
+
+    <h2 id="google">How PettyCash uses Google data</h2>
+    <p>Sending from Gmail is optional. If you use it, you connect your own Google account, and PettyCash requests
+    only these permissions:</p>
+    <div class="table"><table><thead><tr><th>Permission</th><th>Used for</th></tr></thead><tbody>
+      <tr><td><code>openid</code>, <code>email</code></td><td>Showing which Google account is connected, sending from that address, sending you a copy if you ask, and
+      recording the sender in the send history on your iPhone.</td></tr>
+      <tr><td><code>gmail.send</code> (send email on your behalf)</td><td>Sending the reimbursement email you reviewed, with your report PDF attached, when you tap Send from Gmail,
+      and a test email to yourself when you ask for one.</td></tr>
+    </tbody></table></div>
+    <ul>
+      <li>PettyCash <strong>cannot read, search or delete</strong> your email.</li>
+      <li>Emails go <strong>directly from your iPhone to Google's Gmail API</strong>. There is no PettyCash server in
+      between.</li>
+      <li>Your Google sign-in is stored only in your iPhone's Keychain. Disconnect any time in the app (Settings ›
+      Sending › Disconnect Gmail), or at
+      <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</li>
+      <li>Google user data is never sold, never used for advertising, never used to train AI models, and never read by
+      people.</li>
+    </ul>
+    <p class="callout">PettyCash's use and transfer of information received from Google APIs adheres to the
+    <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>,
+    including the Limited Use requirements. Details are in our <a href="privacy.html#5-google-user-data">Privacy Policy</a>.</p>
+
+    <h2 id="about">About</h2>
+    <p>PettyCash is made by Radin Ahmadi, an independent developer in British Columbia, Canada. Amounts are in the currency
+    you choose in Settings (Canadian dollars by default in Canada), and are never converted. PettyCash is a record-keeping tool and is not financial, tax or legal advice.</p>
+    <p><a href="support.html">Support &amp; FAQ</a> · <a href="privacy.html">Privacy Policy</a> ·
+    <a href="terms.html">Terms of Use</a> · Contact: <a href="mailto:pettycash.help@gmail.com">pettycash.help@gmail.com</a></p>
+
+  </article>
+</main>
+<footer class="site">
+  <div class="wrap">
+    © 2026 Radin Ahmadi · British Columbia, Canada ·
+    <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a> · <a href="support.html">Support</a><br>
+    Gmail and Google are trademarks of Google LLC. PettyCash is not affiliated with or endorsed by Google or Apple.
+  </div>
+</footer>
+</body>
+</html>
